@@ -99,19 +99,19 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.80339cm</Width>
+                  <Width>2.72931cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.80339cm</Width>
+                  <Width>2.72931cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.80339cm</Width>
+                  <Width>2.72931cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.80339cm</Width>
+                  <Width>2.72931cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.80339cm</Width>
+                  <Width>2.79281cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -302,7 +302,7 @@
                     </GroupExpressions>
                   </Group>
                   <TablixHeader>
-                    <Size>0.6cm</Size>
+                    <Size>0.981cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox2">
                         <CanGrow>true</CanGrow>
@@ -314,6 +314,7 @@
                                 <Value>Gross Sales</Value>
                                 <Style>
                                   <FontWeight>SemiBold</FontWeight>
+                                  <TextDecoration>Underline</TextDecoration>
                                 </Style>
                               </TextRun>
                             </TextRuns>
@@ -327,6 +328,7 @@
                           <Border>
                             <Style>None</Style>
                           </Border>
+                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -338,7 +340,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>0.6cm</Size>
+                    <Size>0.981cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox1">
                         <CanGrow>true</CanGrow>
@@ -350,6 +352,7 @@
                                 <Value>Discount</Value>
                                 <Style>
                                   <FontWeight>SemiBold</FontWeight>
+                                  <TextDecoration>Underline</TextDecoration>
                                 </Style>
                               </TextRun>
                             </TextRuns>
@@ -363,6 +366,7 @@
                           <Border>
                             <Style>None</Style>
                           </Border>
+                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -374,7 +378,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>0.6cm</Size>
+                    <Size>0.981cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox5">
                         <CanGrow>true</CanGrow>
@@ -386,7 +390,8 @@
                                 <Value>Net Sales
 (No Tax)</Value>
                                 <Style>
-                                  <FontWeight>Medium</FontWeight>
+                                  <FontWeight>SemiBold</FontWeight>
+                                  <TextDecoration>Underline</TextDecoration>
                                 </Style>
                               </TextRun>
                             </TextRuns>
@@ -400,6 +405,7 @@
                           <Border>
                             <Style>None</Style>
                           </Border>
+                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -411,7 +417,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>0.6cm</Size>
+                    <Size>0.981cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox7">
                         <CanGrow>true</CanGrow>
@@ -422,7 +428,8 @@
                               <TextRun>
                                 <Value>Taxes</Value>
                                 <Style>
-                                  <FontWeight>Medium</FontWeight>
+                                  <FontWeight>SemiBold</FontWeight>
+                                  <TextDecoration>Underline</TextDecoration>
                                 </Style>
                               </TextRun>
                             </TextRuns>
@@ -436,6 +443,7 @@
                           <Border>
                             <Style>None</Style>
                           </Border>
+                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -447,7 +455,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>0.6cm</Size>
+                    <Size>0.981cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox9">
                         <CanGrow>true</CanGrow>
@@ -458,7 +466,8 @@
                               <TextRun>
                                 <Value>Net Sales</Value>
                                 <Style>
-                                  <FontWeight>Medium</FontWeight>
+                                  <FontWeight>SemiBold</FontWeight>
+                                  <TextDecoration>Underline</TextDecoration>
                                 </Style>
                               </TextRun>
                             </TextRuns>
@@ -472,6 +481,7 @@
                           <Border>
                             <Style>None</Style>
                           </Border>
+                          <VerticalAlign>Middle</VerticalAlign>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
                           <PaddingTop>2pt</PaddingTop>
@@ -497,7 +507,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>3.14205cm</Size>
+                    <Size>2.70813cm</Size>
                     <CellContents>
                       <Textbox Name="TimeLabel">
                         <CanGrow>true</CanGrow>
@@ -513,7 +523,7 @@
                               </TextRun>
                             </TextRuns>
                             <Style>
-                              <TextAlign>Center</TextAlign>
+                              <TextAlign>Left</TextAlign>
                             </Style>
                           </Paragraph>
                         </Paragraphs>
@@ -534,10 +544,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>ItemSoldDataSet</DataSetName>
-            <Top>8.60542cm</Top>
-            <Left>0.32808cm</Left>
-            <Height>1.2cm</Height>
-            <Width>17.159cm</Width>
+            <Top>9.24042cm</Top>
+            <Left>0.92075cm</Left>
+            <Height>1.581cm</Height>
+            <Width>16.41817cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -753,6 +763,7 @@
                       </Style>
                     </ChartMajorGridLines>
                     <ChartMinorGridLines>
+                      <Enabled>False</Enabled>
                       <Style>
                         <Border>
                           <Color>Gainsboro</Color>
@@ -779,7 +790,6 @@
                     <CrossAt>NaN</CrossAt>
                     <Minimum>0</Minimum>
                     <Maximum>=Max(Fields!NetSalesWithTax.Value)</Maximum>
-                    <IncludeZero>false</IncludeZero>
                     <ChartAxisScaleBreak>
                       <Style />
                     </ChartAxisScaleBreak>
@@ -860,6 +870,7 @@
               <ChartCustomPaletteColor>Gold</ChartCustomPaletteColor>
             </ChartCustomPaletteColors>
             <ChartBorderSkin>
+              <ChartBorderSkinType>Emboss</ChartBorderSkinType>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -883,9 +894,9 @@
             </ChartNoDataMessage>
             <DataSetName>ItemSoldDataSet</DataSetName>
             <Top>0.39158cm</Top>
-            <Left>0.32808cm</Left>
+            <Left>0.92075cm</Left>
             <Height>8.21383cm</Height>
-            <Width>17.159cm</Width>
+            <Width>16.41817cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -901,10 +912,10 @@
             </cl:ComponentMetadata>
           </Chart>
         </ReportItems>
-        <Height>7.95833in</Height>
+        <Height>4.66666in</Height>
         <Style />
       </Body>
-      <Width>6.97634in</Width>
+      <Width>7.08467in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>

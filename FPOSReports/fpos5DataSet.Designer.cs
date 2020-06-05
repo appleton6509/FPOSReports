@@ -1005,31 +1005,30 @@ namespace FPOSReports.fpos5DataSetTableAdapters {
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "select DATEPART(hour, SoldDate) as Time, \r\nTimeLabel =  (\r\nCASE\r\n\twhen DATEPART(h" +
-                "our, SoldDate) = \'23\' then \'11PM - 12AM\'\r\n\twhen DATEPART(hour, SoldDate) = \'22\' " +
-                "then \'10PM - 11PM\'\r\n\twhen DATEPART(hour, SoldDate) = \'21\' then \'9PM - 10PM\'\r\n\twh" +
-                "en DATEPART(hour, SoldDate) = \'20\' then \'8PM - 9PM\'\r\n\twhen DATEPART(hour, SoldDa" +
-                "te) = \'19\' then \'7PM - 8PM\'\r\n\twhen DATEPART(hour, SoldDate) = \'18\' then \'6PM - 7" +
-                "PM\'\r\n\twhen DATEPART(hour, SoldDate) = \'17\' then \'5PM - 6PM\'\r\n\twhen DATEPART(hour" +
-                ", SoldDate) = \'16\' then \'4PM - 5PM\'\r\n\twhen DATEPART(hour, SoldDate) = \'15\' then " +
-                "\'3PM - 4PM\'\r\n\twhen DATEPART(hour, SoldDate) = \'14\' then \'2PM - 3PM\'\r\n\twhen DATEP" +
-                "ART(hour, SoldDate) = \'13\' then \'1PM - 2PM\'\r\n\twhen DATEPART(hour, SoldDate) = \'1" +
-                "2\' then \'12PM - 1PM\'\r\n\twhen DATEPART(hour, SoldDate) = \'11\' then \'11AM - 12PM\'\r\n" +
-                "\twhen DATEPART(hour, SoldDate) = \'10\' then \'10AM - 11AM\'\r\n\twhen DATEPART(hour, S" +
-                "oldDate) = \'9\' then \'9AM - 10AM\'\r\n\twhen DATEPART(hour, SoldDate) = \'8\' then \'8AM" +
-                " - 9AM\'\r\n\twhen DATEPART(hour, SoldDate) = \'7\' then \'7AM - 8AM\'\r\n\twhen DATEPART(h" +
-                "our, SoldDate) = \'6\' then \'6AM - 7AM\'\r\n\twhen DATEPART(hour, SoldDate) = \'5\' then" +
-                " \'5AM - 6AM\'\r\n\twhen DATEPART(hour, SoldDate) = \'4\' then \'4AM - 5AM\'\r\n\twhen DATEP" +
-                "ART(hour, SoldDate) = \'3\' then \'3AM - 4AM\'\r\n\twhen DATEPART(hour, SoldDate) = \'2\'" +
-                " then \'2AM - 3AM\'\r\n\twhen DATEPART(hour, SoldDate) = \'1\' then \'1AM - 2AM\'\r\n\twhen " +
-                "DATEPART(hour, SoldDate) = \'0\' then \'12AM - 1AM\'\r\nEND\r\n),\r\ncoalesce(SUM(CAST(Gro" +
-                "ssPrice as decimal)/100),0) as GrossSales,\r\ncoalesce(SUM((CAST(GrossPrice as dec" +
-                "imal) - CAST(ActualPrice as decimal))/100),0) as Discount,\r\ncoalesce(SUM(CAST(Ac" +
-                "tualPrice as decimal) /100),0) as NetSalesNoTax,\r\ncoalesce(SUM(CAST(TotalTax as " +
-                "decimal)/100),0) as Taxes,\r\ncoalesce(Sum((CAST(ActualPrice as decimal) + CAST(To" +
-                "talTax as decimal))/100),0) as NetSalesWithTax\r\nfrom SaleItem as si LEFT JOIN\r\nS" +
-                "ale as s on s.SaleID = si.SaleID\r\nwhere s.IsCancelled = 0 AND\r\n\ts.IsSuspend = 0 " +
-                "AND\r\n\ts.IsTrainMode = 0 AND\r\n\tsi.VoidDate IS NULL AND\r\n\tsi.SoldDate IS NOT NULL\r" +
-                "\ngroup by DATEPART(hour, SoldDate)\r\norder by DATEPART(hour, SoldDate)\r\n";
+                "our, SoldDate) = \'23\' then \'11PM\'\r\n\twhen DATEPART(hour, SoldDate) = \'22\' then \'1" +
+                "0PM\'\r\n\twhen DATEPART(hour, SoldDate) = \'21\' then \'9PM\'\r\n\twhen DATEPART(hour, Sol" +
+                "dDate) = \'20\' then \'8PM\'\r\n\twhen DATEPART(hour, SoldDate) = \'19\' then \'7PM\'\r\n\twhe" +
+                "n DATEPART(hour, SoldDate) = \'18\' then \'6PM\'\r\n\twhen DATEPART(hour, SoldDate) = \'" +
+                "17\' then \'5PM\'\r\n\twhen DATEPART(hour, SoldDate) = \'16\' then \'4PM\'\r\n\twhen DATEPART" +
+                "(hour, SoldDate) = \'15\' then \'3PM\'\r\n\twhen DATEPART(hour, SoldDate) = \'14\' then \'" +
+                "2PM\'\r\n\twhen DATEPART(hour, SoldDate) = \'13\' then \'1PM\'\r\n\twhen DATEPART(hour, Sol" +
+                "dDate) = \'12\' then \'12PM\'\r\n\twhen DATEPART(hour, SoldDate) = \'11\' then \'11AM\'\r\n\tw" +
+                "hen DATEPART(hour, SoldDate) = \'10\' then \'10AM\'\r\n\twhen DATEPART(hour, SoldDate) " +
+                "= \'9\' then \'9AM\'\r\n\twhen DATEPART(hour, SoldDate) = \'8\' then \'8AM\'\r\n\twhen DATEPAR" +
+                "T(hour, SoldDate) = \'7\' then \'7AM\'\r\n\twhen DATEPART(hour, SoldDate) = \'6\' then \'6" +
+                "AM\'\r\n\twhen DATEPART(hour, SoldDate) = \'5\' then \'5AM\'\r\n\twhen DATEPART(hour, SoldD" +
+                "ate) = \'4\' then \'4AM\'\r\n\twhen DATEPART(hour, SoldDate) = \'3\' then \'3AM\'\r\n\twhen DA" +
+                "TEPART(hour, SoldDate) = \'2\' then \'2AM\'\r\n\twhen DATEPART(hour, SoldDate) = \'1\' th" +
+                "en \'1AM\'\r\n\twhen DATEPART(hour, SoldDate) = \'0\' then \'12AM\'\r\nEND\r\n),\r\ncoalesce(SU" +
+                "M(CAST(GrossPrice as decimal)/100),0) as GrossSales,\r\ncoalesce(SUM((CAST(GrossPr" +
+                "ice as decimal) - CAST(ActualPrice as decimal))/100),0) as Discount,\r\ncoalesce(S" +
+                "UM(CAST(ActualPrice as decimal) /100),0) as NetSalesNoTax,\r\ncoalesce(SUM(CAST(To" +
+                "talTax as decimal)/100),0) as Taxes,\r\ncoalesce(Sum((CAST(ActualPrice as decimal)" +
+                " + CAST(TotalTax as decimal))/100),0) as NetSalesWithTax\r\nfrom SaleItem as si LE" +
+                "FT JOIN\r\nSale as s on s.SaleID = si.SaleID\r\nwhere s.IsCancelled = 0 AND\r\n\ts.IsSu" +
+                "spend = 0 AND\r\n\ts.IsTrainMode = 0 AND\r\n\tsi.VoidDate IS NULL AND\r\n\tsi.SoldDate IS" +
+                " NOT NULL\r\ngroup by DATEPART(hour, SoldDate)\r\norder by DATEPART(hour, SoldDate)\r" +
+                "\n";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

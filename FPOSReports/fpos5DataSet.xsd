@@ -15,30 +15,30 @@
                     <CommandText>select DATEPART(hour, SoldDate) as Time, 
 TimeLabel =  (
 CASE
-	when DATEPART(hour, SoldDate) = '23' then '11PM - 12AM'
-	when DATEPART(hour, SoldDate) = '22' then '10PM - 11PM'
-	when DATEPART(hour, SoldDate) = '21' then '9PM - 10PM'
-	when DATEPART(hour, SoldDate) = '20' then '8PM - 9PM'
-	when DATEPART(hour, SoldDate) = '19' then '7PM - 8PM'
-	when DATEPART(hour, SoldDate) = '18' then '6PM - 7PM'
-	when DATEPART(hour, SoldDate) = '17' then '5PM - 6PM'
-	when DATEPART(hour, SoldDate) = '16' then '4PM - 5PM'
-	when DATEPART(hour, SoldDate) = '15' then '3PM - 4PM'
-	when DATEPART(hour, SoldDate) = '14' then '2PM - 3PM'
-	when DATEPART(hour, SoldDate) = '13' then '1PM - 2PM'
-	when DATEPART(hour, SoldDate) = '12' then '12PM - 1PM'
-	when DATEPART(hour, SoldDate) = '11' then '11AM - 12PM'
-	when DATEPART(hour, SoldDate) = '10' then '10AM - 11AM'
-	when DATEPART(hour, SoldDate) = '9' then '9AM - 10AM'
-	when DATEPART(hour, SoldDate) = '8' then '8AM - 9AM'
-	when DATEPART(hour, SoldDate) = '7' then '7AM - 8AM'
-	when DATEPART(hour, SoldDate) = '6' then '6AM - 7AM'
-	when DATEPART(hour, SoldDate) = '5' then '5AM - 6AM'
-	when DATEPART(hour, SoldDate) = '4' then '4AM - 5AM'
-	when DATEPART(hour, SoldDate) = '3' then '3AM - 4AM'
-	when DATEPART(hour, SoldDate) = '2' then '2AM - 3AM'
-	when DATEPART(hour, SoldDate) = '1' then '1AM - 2AM'
-	when DATEPART(hour, SoldDate) = '0' then '12AM - 1AM'
+	when DATEPART(hour, SoldDate) = '23' then '11PM'
+	when DATEPART(hour, SoldDate) = '22' then '10PM'
+	when DATEPART(hour, SoldDate) = '21' then '9PM'
+	when DATEPART(hour, SoldDate) = '20' then '8PM'
+	when DATEPART(hour, SoldDate) = '19' then '7PM'
+	when DATEPART(hour, SoldDate) = '18' then '6PM'
+	when DATEPART(hour, SoldDate) = '17' then '5PM'
+	when DATEPART(hour, SoldDate) = '16' then '4PM'
+	when DATEPART(hour, SoldDate) = '15' then '3PM'
+	when DATEPART(hour, SoldDate) = '14' then '2PM'
+	when DATEPART(hour, SoldDate) = '13' then '1PM'
+	when DATEPART(hour, SoldDate) = '12' then '12PM'
+	when DATEPART(hour, SoldDate) = '11' then '11AM'
+	when DATEPART(hour, SoldDate) = '10' then '10AM'
+	when DATEPART(hour, SoldDate) = '9' then '9AM'
+	when DATEPART(hour, SoldDate) = '8' then '8AM'
+	when DATEPART(hour, SoldDate) = '7' then '7AM'
+	when DATEPART(hour, SoldDate) = '6' then '6AM'
+	when DATEPART(hour, SoldDate) = '5' then '5AM'
+	when DATEPART(hour, SoldDate) = '4' then '4AM'
+	when DATEPART(hour, SoldDate) = '3' then '3AM'
+	when DATEPART(hour, SoldDate) = '2' then '2AM'
+	when DATEPART(hour, SoldDate) = '1' then '1AM'
+	when DATEPART(hour, SoldDate) = '0' then '12AM'
 END
 ),
 coalesce(SUM(CAST(GrossPrice as decimal)/100),0) as GrossSales,
@@ -80,7 +80,7 @@ order by DATEPART(hour, SoldDate)
   <xs:element name="fpos5DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="fpos5DataSet" msprop:Generator_UserDSName="fpos5DataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="ItemSoldTable" msprop:Generator_TableClassName="ItemSoldTableDataTable" msprop:Generator_TableVarName="tableItemSoldTable" msprop:Generator_RowChangedName="ItemSoldTableRowChanged" msprop:Generator_TablePropName="ItemSoldTable" msprop:Generator_RowDeletingName="ItemSoldTableRowDeleting" msprop:Generator_RowChangingName="ItemSoldTableRowChanging" msprop:Generator_RowEvHandlerName="ItemSoldTableRowChangeEventHandler" msprop:Generator_RowDeletedName="ItemSoldTableRowDeleted" msprop:Generator_RowClassName="ItemSoldTableRow" msprop:Generator_UserTableName="ItemSoldTable" msprop:Generator_RowEvArgName="ItemSoldTableRowChangeEvent">
+        <xs:element name="ItemSoldTable" msprop:Generator_TableClassName="ItemSoldTableDataTable" msprop:Generator_TableVarName="tableItemSoldTable" msprop:Generator_TablePropName="ItemSoldTable" msprop:Generator_RowDeletingName="ItemSoldTableRowDeleting" msprop:Generator_RowChangingName="ItemSoldTableRowChanging" msprop:Generator_RowEvHandlerName="ItemSoldTableRowChangeEventHandler" msprop:Generator_RowDeletedName="ItemSoldTableRowDeleted" msprop:Generator_UserTableName="ItemSoldTable" msprop:Generator_RowChangedName="ItemSoldTableRowChanged" msprop:Generator_RowEvArgName="ItemSoldTableRowChangeEvent" msprop:Generator_RowClassName="ItemSoldTableRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Time" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTime" msprop:Generator_ColumnPropNameInRow="Time" msprop:Generator_ColumnPropNameInTable="TimeColumn" msprop:Generator_UserColumnName="Time" type="xs:int" minOccurs="0" />
