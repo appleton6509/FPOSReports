@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="fpos5DataSet" targetNamespace="http://tempuri.org/fpos5DataSet.xsd" xmlns:mstns="http://tempuri.org/fpos5DataSet.xsd" xmlns="http://tempuri.org/fpos5DataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="fpos5ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="fpos5ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.FPOSReports.Properties.Settings.GlobalReference.Default.fpos5ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ItemSoldTableAdapter" GeneratorDataComponentClassName="ItemSoldTableAdapter" Name="ItemSoldTable" UserDataComponentName="ItemSoldTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="fpos5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select DATEPART(hour, SoldDate) as Time, 
+TimeLabel =  (
+CASE
+	when DATEPART(hour, SoldDate) = '23' then '11PM - 12AM'
+	when DATEPART(hour, SoldDate) = '22' then '10PM - 11PM'
+	when DATEPART(hour, SoldDate) = '21' then '9PM - 10PM'
+	when DATEPART(hour, SoldDate) = '20' then '8PM - 9PM'
+	when DATEPART(hour, SoldDate) = '19' then '7PM - 8PM'
+	when DATEPART(hour, SoldDate) = '18' then '6PM - 7PM'
+	when DATEPART(hour, SoldDate) = '17' then '5PM - 6PM'
+	when DATEPART(hour, SoldDate) = '16' then '4PM - 5PM'
+	when DATEPART(hour, SoldDate) = '15' then '3PM - 4PM'
+	when DATEPART(hour, SoldDate) = '14' then '2PM - 3PM'
+	when DATEPART(hour, SoldDate) = '13' then '1PM - 2PM'
+	when DATEPART(hour, SoldDate) = '12' then '12PM - 1PM'
+	when DATEPART(hour, SoldDate) = '11' then '11AM - 12PM'
+	when DATEPART(hour, SoldDate) = '10' then '10AM - 11AM'
+	when DATEPART(hour, SoldDate) = '9' then '9AM - 10AM'
+	when DATEPART(hour, SoldDate) = '8' then '8AM - 9AM'
+	when DATEPART(hour, SoldDate) = '7' then '7AM - 8AM'
+	when DATEPART(hour, SoldDate) = '6' then '6AM - 7AM'
+	when DATEPART(hour, SoldDate) = '5' then '5AM - 6AM'
+	when DATEPART(hour, SoldDate) = '4' then '4AM - 5AM'
+	when DATEPART(hour, SoldDate) = '3' then '3AM - 4AM'
+	when DATEPART(hour, SoldDate) = '2' then '2AM - 3AM'
+	when DATEPART(hour, SoldDate) = '1' then '1AM - 2AM'
+	when DATEPART(hour, SoldDate) = '0' then '12AM - 1AM'
+END
+),
+coalesce(SUM(CAST(GrossPrice as decimal)/100),0) as GrossSales,
+coalesce(SUM((CAST(GrossPrice as decimal) - CAST(ActualPrice as decimal))/100),0) as Discount,
+coalesce(SUM(CAST(ActualPrice as decimal) /100),0) as NetSalesNoTax,
+coalesce(SUM(CAST(TotalTax as decimal)/100),0) as Taxes,
+coalesce(Sum((CAST(ActualPrice as decimal) + CAST(TotalTax as decimal))/100),0) as NetSalesWithTax
+from SaleItem as si LEFT JOIN
+Sale as s on s.SaleID = si.SaleID
+where s.IsCancelled = 0 AND
+	s.IsSuspend = 0 AND
+	s.IsTrainMode = 0 AND
+	si.VoidDate IS NULL AND
+	si.SoldDate IS NOT NULL
+group by DATEPART(hour, SoldDate)
+order by DATEPART(hour, SoldDate)
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Time" DataSetColumn="Time" />
+              <Mapping SourceColumn="TimeLabel" DataSetColumn="TimeLabel" />
+              <Mapping SourceColumn="GrossSales" DataSetColumn="GrossSales" />
+              <Mapping SourceColumn="Discount" DataSetColumn="Discount" />
+              <Mapping SourceColumn="NetSalesNoTax" DataSetColumn="NetSalesNoTax" />
+              <Mapping SourceColumn="Taxes" DataSetColumn="Taxes" />
+              <Mapping SourceColumn="NetSalesWithTax" DataSetColumn="NetSalesWithTax" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="fpos5DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="fpos5DataSet" msprop:Generator_UserDSName="fpos5DataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ItemSoldTable" msprop:Generator_TableClassName="ItemSoldTableDataTable" msprop:Generator_TableVarName="tableItemSoldTable" msprop:Generator_RowChangedName="ItemSoldTableRowChanged" msprop:Generator_TablePropName="ItemSoldTable" msprop:Generator_RowDeletingName="ItemSoldTableRowDeleting" msprop:Generator_RowChangingName="ItemSoldTableRowChanging" msprop:Generator_RowEvHandlerName="ItemSoldTableRowChangeEventHandler" msprop:Generator_RowDeletedName="ItemSoldTableRowDeleted" msprop:Generator_RowClassName="ItemSoldTableRow" msprop:Generator_UserTableName="ItemSoldTable" msprop:Generator_RowEvArgName="ItemSoldTableRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Time" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTime" msprop:Generator_ColumnPropNameInRow="Time" msprop:Generator_ColumnPropNameInTable="TimeColumn" msprop:Generator_UserColumnName="Time" type="xs:int" minOccurs="0" />
+              <xs:element name="TimeLabel" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTimeLabel" msprop:Generator_ColumnPropNameInRow="TimeLabel" msprop:Generator_ColumnPropNameInTable="TimeLabelColumn" msprop:Generator_UserColumnName="TimeLabel" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="11" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GrossSales" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGrossSales" msprop:Generator_ColumnPropNameInRow="GrossSales" msprop:Generator_ColumnPropNameInTable="GrossSalesColumn" msprop:Generator_UserColumnName="GrossSales" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Discount" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDiscount" msprop:Generator_ColumnPropNameInRow="Discount" msprop:Generator_ColumnPropNameInTable="DiscountColumn" msprop:Generator_UserColumnName="Discount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NetSalesNoTax" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNetSalesNoTax" msprop:Generator_ColumnPropNameInRow="NetSalesNoTax" msprop:Generator_ColumnPropNameInTable="NetSalesNoTaxColumn" msprop:Generator_UserColumnName="NetSalesNoTax" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Taxes" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTaxes" msprop:Generator_ColumnPropNameInRow="Taxes" msprop:Generator_ColumnPropNameInTable="TaxesColumn" msprop:Generator_UserColumnName="Taxes" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NetSalesWithTax" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNetSalesWithTax" msprop:Generator_ColumnPropNameInRow="NetSalesWithTax" msprop:Generator_ColumnPropNameInTable="NetSalesWithTaxColumn" msprop:Generator_UserColumnName="NetSalesWithTax" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
