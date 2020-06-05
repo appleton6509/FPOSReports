@@ -83,8 +83,7 @@
                         <rd:DefaultName>Textbox4</rd:DefaultName>
                         <Style>
                           <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
+                            <Style>None</Style>
                           </Border>
                           <PaddingLeft>2pt</PaddingLeft>
                           <PaddingRight>2pt</PaddingRight>
@@ -313,7 +312,9 @@
                             <TextRuns>
                               <TextRun>
                                 <Value>Gross Sales</Value>
-                                <Style />
+                                <Style>
+                                  <FontWeight>SemiBold</FontWeight>
+                                </Style>
                               </TextRun>
                             </TextRuns>
                             <Style>
@@ -347,7 +348,9 @@
                             <TextRuns>
                               <TextRun>
                                 <Value>Discount</Value>
-                                <Style />
+                                <Style>
+                                  <FontWeight>SemiBold</FontWeight>
+                                </Style>
                               </TextRun>
                             </TextRuns>
                             <Style>
@@ -382,7 +385,9 @@
                               <TextRun>
                                 <Value>Net Sales
 (No Tax)</Value>
-                                <Style />
+                                <Style>
+                                  <FontWeight>Medium</FontWeight>
+                                </Style>
                               </TextRun>
                             </TextRuns>
                             <Style>
@@ -416,7 +421,9 @@
                             <TextRuns>
                               <TextRun>
                                 <Value>Taxes</Value>
-                                <Style />
+                                <Style>
+                                  <FontWeight>Medium</FontWeight>
+                                </Style>
                               </TextRun>
                             </TextRuns>
                             <Style>
@@ -450,7 +457,9 @@
                             <TextRuns>
                               <TextRun>
                                 <Value>Net Sales</Value>
-                                <Style />
+                                <Style>
+                                  <FontWeight>Medium</FontWeight>
+                                </Style>
                               </TextRun>
                             </TextRuns>
                             <Style>
@@ -488,7 +497,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>2.80339cm</Size>
+                    <Size>3.14205cm</Size>
                     <CellContents>
                       <Textbox Name="TimeLabel">
                         <CanGrow>true</CanGrow>
@@ -498,10 +507,14 @@
                             <TextRuns>
                               <TextRun>
                                 <Value>=Fields!TimeLabel.Value</Value>
-                                <Style />
+                                <Style>
+                                  <FontWeight>SemiBold</FontWeight>
+                                </Style>
                               </TextRun>
                             </TextRuns>
-                            <Style />
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
                           </Paragraph>
                         </Paragraphs>
                         <rd:DefaultName>TimeLabel</rd:DefaultName>
@@ -524,7 +537,7 @@
             <Top>8.60542cm</Top>
             <Left>0.32808cm</Left>
             <Height>1.2cm</Height>
-            <Width>16.82033cm</Width>
+            <Width>17.159cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -542,7 +555,8 @@
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!TimeLabel.Value</Value>
+                      <Value>=Fields!Time.Value</Value>
+                      <Direction>Descending</Direction>
                     </SortExpression>
                   </SortExpressions>
                   <Label>=Fields!TimeLabel.Value</Label>
@@ -565,32 +579,19 @@
                         <Y>=Sum(Fields!GrossSales.Value)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
-                        <Style>
-                          <FontWeight>SemiBold</FontWeight>
-                          <Format>'$'0.00;('$'0.00)</Format>
-                          <rd:FormatSymbolCulture>en-CA</rd:FormatSymbolCulture>
-                        </Style>
-                        <UseValueAsLabel>true</UseValueAsLabel>
-                        <Position>Top</Position>
+                        <Style />
                       </ChartDataLabel>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                          <Width>0.25pt</Width>
-                        </Border>
-                        <BackgroundGradientType>None</BackgroundGradientType>
-                        <BackgroundGradientEndColor>MidnightBlue</BackgroundGradientEndColor>
-                      </Style>
+                      <Style />
                       <ChartMarker>
-                        <Type>Circle</Type>
+                        <Type>Auto</Type>
                         <Style />
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
                     </ChartDataPoint>
                   </ChartDataPoints>
-                  <Style>
-                    <ShadowOffset>1pt</ShadowOffset>
-                  </Style>
+                  <Type>Line</Type>
+                  <Subtype>Smooth</Subtype>
+                  <Style />
                   <ChartEmptyPoints>
                     <Style />
                     <ChartMarker>
@@ -603,9 +604,7 @@
                   <ValueAxisName>Primary</ValueAxisName>
                   <CategoryAxisName>Primary</CategoryAxisName>
                   <ChartSmartLabel>
-                    <AllowOutSidePlotArea>True</AllowOutSidePlotArea>
                     <CalloutLineColor>Black</CalloutLineColor>
-                    <ShowOverlapped>true</ShowOverlapped>
                     <MinMovingDistance>0pt</MinMovingDistance>
                   </ChartSmartLabel>
                 </ChartSeries>
@@ -630,7 +629,6 @@
                         <Color>#5c5c5c</Color>
                       </Style>
                     </ChartAxisTitle>
-                    <Margin>False</Margin>
                     <ChartMajorGridLines>
                       <Enabled>False</Enabled>
                       <Style>
@@ -687,7 +685,6 @@
                         <Color>#5c5c5c</Color>
                       </Style>
                     </ChartAxisTitle>
-                    <Margin>False</Margin>
                     <ChartMajorGridLines>
                       <Enabled>False</Enabled>
                       <Style>
@@ -737,7 +734,9 @@
                         <Style>None</Style>
                       </Border>
                       <FontSize>8pt</FontSize>
+                      <Format>'$'0;('$'0)</Format>
                       <Color>#5c5c5c</Color>
+                      <rd:FormatSymbolCulture>en-CA</rd:FormatSymbolCulture>
                     </Style>
                     <ChartAxisTitle>
                       <Caption />
@@ -779,7 +778,7 @@
                     </ChartMinorTickMarks>
                     <CrossAt>NaN</CrossAt>
                     <Minimum>0</Minimum>
-                    <Maximum>=Sum(Fields!GrossSales.Value, "ItemSoldDataSet")</Maximum>
+                    <Maximum>=Max(Fields!NetSalesWithTax.Value)</Maximum>
                     <IncludeZero>false</IncludeZero>
                     <ChartAxisScaleBreak>
                       <Style />
