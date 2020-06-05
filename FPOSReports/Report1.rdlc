@@ -99,19 +99,19 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.72931cm</Width>
+                  <Width>2.77164cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.72931cm</Width>
+                  <Width>2.77164cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.72931cm</Width>
+                  <Width>2.77164cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.72931cm</Width>
+                  <Width>2.77164cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.79281cm</Width>
+                  <Width>2.83514cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -129,7 +129,7 @@
                                 <TextRun>
                                   <Value>=Sum(Fields!GrossSales.Value)</Value>
                                   <Style>
-                                    <Format>'$'0.00;('$'0.00)</Format>
+                                    <Format>'$'0.00;('$'0.00);''</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -163,7 +163,7 @@
                                 <TextRun>
                                   <Value>=Sum(Fields!Discount.Value)</Value>
                                   <Style>
-                                    <Format>'$'0.00;('$'0.00)</Format>
+                                    <Format>'$'0.00;('$'0.00);''</Format>
                                     <rd:FormatSymbolCulture>en-CA</rd:FormatSymbolCulture>
                                   </Style>
                                 </TextRun>
@@ -198,7 +198,7 @@
                                 <TextRun>
                                   <Value>=Sum(Fields!NetSalesNoTax.Value)</Value>
                                   <Style>
-                                    <Format>'$'0.00;('$'0.00)</Format>
+                                    <Format>'$'0.00;('$'0.00);''</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -232,7 +232,7 @@
                                 <TextRun>
                                   <Value>=Sum(Fields!Taxes.Value)</Value>
                                   <Style>
-                                    <Format>'$'0.00;('$'0.00)</Format>
+                                    <Format>'$'0.00;('$'0.00);''</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -266,7 +266,7 @@
                                 <TextRun>
                                   <Value>=Sum(Fields!NetSalesWithTax.Value)</Value>
                                   <Style>
-                                    <Format>'$'0.00;('$'0.00)</Format>
+                                    <Format>'$'0.00;('$'0.00);''</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -287,6 +287,7 @@
                             <rd:FormatSymbolCulture>en-CA</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -507,7 +508,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>2.70813cm</Size>
+                    <Size>2.75046cm</Size>
                     <CellContents>
                       <Textbox Name="TimeLabel">
                         <CanGrow>true</CanGrow>
@@ -547,7 +548,7 @@
             <Top>9.24042cm</Top>
             <Left>0.92075cm</Left>
             <Height>1.581cm</Height>
-            <Width>16.41817cm</Width>
+            <Width>16.67216cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>

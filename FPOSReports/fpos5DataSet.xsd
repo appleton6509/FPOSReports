@@ -9,53 +9,72 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ItemSoldTableAdapter" GeneratorDataComponentClassName="ItemSoldTableAdapter" Name="ItemSoldTable" UserDataComponentName="ItemSoldTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="fpos5ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="fpos5ConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>select DATEPART(hour, SoldDate) as Time, 
-TimeLabel =  (
-CASE
-	when DATEPART(hour, SoldDate) = '23' then '11PM'
-	when DATEPART(hour, SoldDate) = '22' then '10PM'
-	when DATEPART(hour, SoldDate) = '21' then '9PM'
-	when DATEPART(hour, SoldDate) = '20' then '8PM'
-	when DATEPART(hour, SoldDate) = '19' then '7PM'
-	when DATEPART(hour, SoldDate) = '18' then '6PM'
-	when DATEPART(hour, SoldDate) = '17' then '5PM'
-	when DATEPART(hour, SoldDate) = '16' then '4PM'
-	when DATEPART(hour, SoldDate) = '15' then '3PM'
-	when DATEPART(hour, SoldDate) = '14' then '2PM'
-	when DATEPART(hour, SoldDate) = '13' then '1PM'
-	when DATEPART(hour, SoldDate) = '12' then '12PM'
-	when DATEPART(hour, SoldDate) = '11' then '11AM'
-	when DATEPART(hour, SoldDate) = '10' then '10AM'
-	when DATEPART(hour, SoldDate) = '9' then '9AM'
-	when DATEPART(hour, SoldDate) = '8' then '8AM'
-	when DATEPART(hour, SoldDate) = '7' then '7AM'
-	when DATEPART(hour, SoldDate) = '6' then '6AM'
-	when DATEPART(hour, SoldDate) = '5' then '5AM'
-	when DATEPART(hour, SoldDate) = '4' then '4AM'
-	when DATEPART(hour, SoldDate) = '3' then '3AM'
-	when DATEPART(hour, SoldDate) = '2' then '2AM'
-	when DATEPART(hour, SoldDate) = '1' then '1AM'
-	when DATEPART(hour, SoldDate) = '0' then '12AM'
-END
-),
-coalesce(SUM(CAST(GrossPrice as decimal)/100),0) as GrossSales,
-coalesce(SUM((CAST(GrossPrice as decimal) - CAST(ActualPrice as decimal))/100),0) as Discount,
-coalesce(SUM(CAST(ActualPrice as decimal) /100),0) as NetSalesNoTax,
-coalesce(SUM(CAST(TotalTax as decimal)/100),0) as Taxes,
-coalesce(Sum((CAST(ActualPrice as decimal) + CAST(TotalTax as decimal))/100),0) as NetSalesWithTax
-from SaleItem as si LEFT JOIN
-Sale as s on s.SaleID = si.SaleID
-where s.IsCancelled = 0 AND
-	s.IsSuspend = 0 AND
-	s.IsTrainMode = 0 AND
-	si.VoidDate IS NULL AND
-	si.SoldDate IS NOT NULL
-group by DATEPART(hour, SoldDate)
-order by DATEPART(hour, SoldDate)
-</CommandText>
+                    <CommandText>
+CREATE TABLE #tmp
+(
+	Time Int,
+	GrossSales Decimal,
+	Discount Decimal,
+	NetSalesNoTax Decimal,
+	Taxes Decimal,
+	NetSalesWithTax Decimal,
+	TimeLabel NVARCHAR(MAX) COLLATE DATABASE_DEFAULT
+)
+
+INSERT INTO #tmp (Time,GrossSales,Discount,NetSalesNoTax,Taxes,NetSalesWithTax,TimeLabel)
+VALUES
+    (0,0,0,0,0,0,'12am'),
+	(1,0,0,0,0,0,'1am'),
+	(2,0,0,0,0,0,'2am'),
+	(3,0,0,0,0,0,'3am'),
+	(4,0,0,0,0,0,'4am'),
+	(5,0,0,0,0,0,'5am'),
+	(6,0,0,0,0,0,'6am'),
+	(7,0,0,0,0,0,'7am'),
+	(8,0,0,0,0,0,'8am'),
+	(9,0,0,0,0,0,'9am'),
+	(10,0,0,0,0,0,'10am'),
+	(11,0,0,0,0,0,'11am'),
+	(12,0,0,0,0,0,'12pm'),
+	(13,0,0,0,0,0,'1pm'),
+	(14,0,0,0,0,0,'2pm'),
+	(15,0,0,0,0,0,'3pm'),
+	(16,0,0,0,0,0,'4pm'),
+	(17,0,0,0,0,0,'5pm'),
+	(18,0,0,0,0,0,'6pm'),
+	(19,0,0,0,0,0,'7pm'),
+	(20,0,0,0,0,0,'8pm'),
+	(21,0,0,0,0,0,'9pm'),
+	(22,0,0,0,0,0,'10pm'),
+	(23,0,0,0,0,0,'11pm');
+
+select t.Time,t.TimeLabel,
+coalesce(r.GrossSales,0) as GrossSales, 
+coalesce(r.Discount,0) as Discount,
+coalesce(r.NetSalesNoTax,0) as NetSalesNoTax,
+coalesce(r.NetSalesWithTax,0) as NetSalesWithTax,
+coalesce(r.Taxes,0) as Taxes  
+from (
+	select DATEPART(hour, SoldDate) as Time,
+	SUM(CAST(GrossPrice as decimal)/100) as GrossSales,
+	SUM((CAST(GrossPrice as decimal) - CAST(ActualPrice as decimal))/100) as Discount,
+	SUM(CAST(ActualPrice as decimal) /100) as NetSalesNoTax,
+	SUM(CAST(TotalTax as decimal)/100) as Taxes,
+	Sum((CAST(ActualPrice as decimal) + CAST(TotalTax as decimal))/100) as NetSalesWithTax,
+	'time' as TimeLabel
+	from SaleItem as si LEFT JOIN
+	Sale as s on s.SaleID = si.SaleID
+	where s.IsCancelled = 0 AND
+		s.IsSuspend = 0 AND
+		s.IsTrainMode = 0 AND
+		si.VoidDate IS NULL AND
+		si.SoldDate IS NOT NULL
+	group by DATEPART(hour, SoldDate)
+) as r 
+RIGHT JOIN #tmp as t on t.Time = r.Time</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
