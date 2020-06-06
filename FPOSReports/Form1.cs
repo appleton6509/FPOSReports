@@ -18,9 +18,9 @@ namespace FPOSReports
             {
                 InitializeComponent();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                MessageBox.Show("unable to connect to database");
+                MessageBox.Show("unable to connect to database" + e.StackTrace);
             }
 
         }
@@ -29,21 +29,19 @@ namespace FPOSReports
         {
             try
             {
-                // TODO: This line of code loads data into the 'fpos5DataSet.ItemSoldTable' table. You can move, or remove it, as needed.
-                this.ItemSoldTableAdapter.Fill(this.fpos5DataSet.ItemSoldTable);
-                this.reportViewer1.RefreshReport();
+                PopulateData(DateTime.Today, DateTime.Today);
             }
-            catch (Exception)
+            catch (Exception f)
             {
-
+                MessageBox.Show("unable to connect to database" + f.StackTrace);
             }
         }
 
-#pragma warning disable IDE1006 // Naming Styles
-        private void reportViewer1_Load(object sender, EventArgs e)
-#pragma warning restore IDE1006 // Naming Styles
+        private void PopulateData(DateTime startDate, DateTime endDate)
         {
-
+            // TODO: This line of code loads data into the 'fpos5DataSet.ItemSoldTable' table. You can move, or remove it, as needed.
+            this.ItemSoldTableAdapter.Fill(this.fpos5DataSet.ItemSoldTable, startDate.ToString(), endDate.ToString());
+            this.reportViewer1.RefreshReport();
         }
     }
 }

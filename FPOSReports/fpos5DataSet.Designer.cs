@@ -1004,38 +1004,55 @@ namespace FPOSReports.fpos5DataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "\r\nCREATE TABLE #tmp\r\n(\r\n\tTime Int,\r\n\tGrossSales Decimal,\r\n\tDiscount Decimal,\r\n\tNe" +
-                "tSalesNoTax Decimal,\r\n\tTaxes Decimal,\r\n\tNetSalesWithTax Decimal,\r\n\tTimeLabel NVA" +
-                "RCHAR(MAX) COLLATE DATABASE_DEFAULT\r\n)\r\n\r\nINSERT INTO #tmp (Time,GrossSales,Disc" +
-                "ount,NetSalesNoTax,Taxes,NetSalesWithTax,TimeLabel)\r\nVALUES\r\n    (0,0,0,0,0,0,\'1" +
-                "2am\'),\r\n\t(1,0,0,0,0,0,\'1am\'),\r\n\t(2,0,0,0,0,0,\'2am\'),\r\n\t(3,0,0,0,0,0,\'3am\'),\r\n\t(4" +
-                ",0,0,0,0,0,\'4am\'),\r\n\t(5,0,0,0,0,0,\'5am\'),\r\n\t(6,0,0,0,0,0,\'6am\'),\r\n\t(7,0,0,0,0,0," +
-                "\'7am\'),\r\n\t(8,0,0,0,0,0,\'8am\'),\r\n\t(9,0,0,0,0,0,\'9am\'),\r\n\t(10,0,0,0,0,0,\'10am\'),\r\n" +
-                "\t(11,0,0,0,0,0,\'11am\'),\r\n\t(12,0,0,0,0,0,\'12pm\'),\r\n\t(13,0,0,0,0,0,\'1pm\'),\r\n\t(14,0" +
-                ",0,0,0,0,\'2pm\'),\r\n\t(15,0,0,0,0,0,\'3pm\'),\r\n\t(16,0,0,0,0,0,\'4pm\'),\r\n\t(17,0,0,0,0,0" +
-                ",\'5pm\'),\r\n\t(18,0,0,0,0,0,\'6pm\'),\r\n\t(19,0,0,0,0,0,\'7pm\'),\r\n\t(20,0,0,0,0,0,\'8pm\')," +
-                "\r\n\t(21,0,0,0,0,0,\'9pm\'),\r\n\t(22,0,0,0,0,0,\'10pm\'),\r\n\t(23,0,0,0,0,0,\'11pm\');\r\n\r\nse" +
-                "lect t.Time,t.TimeLabel,\r\ncoalesce(r.GrossSales,0) as GrossSales, \r\ncoalesce(r.D" +
-                "iscount,0) as Discount,\r\ncoalesce(r.NetSalesNoTax,0) as NetSalesNoTax,\r\ncoalesce" +
-                "(r.NetSalesWithTax,0) as NetSalesWithTax,\r\ncoalesce(r.Taxes,0) as Taxes  \r\nfrom " +
-                "(\r\n\tselect DATEPART(hour, SoldDate) as Time,\r\n\tSUM(CAST(GrossPrice as decimal)/1" +
-                "00) as GrossSales,\r\n\tSUM((CAST(GrossPrice as decimal) - CAST(ActualPrice as deci" +
-                "mal))/100) as Discount,\r\n\tSUM(CAST(ActualPrice as decimal) /100) as NetSalesNoTa" +
-                "x,\r\n\tSUM(CAST(TotalTax as decimal)/100) as Taxes,\r\n\tSum((CAST(ActualPrice as dec" +
-                "imal) + CAST(TotalTax as decimal))/100) as NetSalesWithTax,\r\n\t\'time\' as TimeLabe" +
-                "l\r\n\tfrom SaleItem as si LEFT JOIN\r\n\tSale as s on s.SaleID = si.SaleID\r\n\twhere s." +
-                "IsCancelled = 0 AND\r\n\t\ts.IsSuspend = 0 AND\r\n\t\ts.IsTrainMode = 0 AND\r\n\t\tsi.VoidDa" +
-                "te IS NULL AND\r\n\t\tsi.SoldDate IS NOT NULL\r\n\tgroup by DATEPART(hour, SoldDate)\r\n)" +
-                " as r \r\nRIGHT JOIN #tmp as t on t.Time = r.Time";
+            this._commandCollection[0].CommandText = "CREATE TABLE #tmp\r\n(\r\n\tTime Int,\r\n\tGrossSales Decimal,\r\n\tDiscount Decimal,\r\n\tNetS" +
+                "alesNoTax Decimal,\r\n\tTaxes Decimal,\r\n\tNetSalesWithTax Decimal,\r\n\tTimeLabel NVARC" +
+                "HAR(MAX) COLLATE DATABASE_DEFAULT\r\n)\r\n\r\nINSERT INTO #tmp (Time,GrossSales,Discou" +
+                "nt,NetSalesNoTax,Taxes,NetSalesWithTax,TimeLabel)\r\nVALUES\r\n    (0,0,0,0,0,0,\'12a" +
+                "m\'),\r\n\t(1,0,0,0,0,0,\'1am\'),\r\n\t(2,0,0,0,0,0,\'2am\'),\r\n\t(3,0,0,0,0,0,\'3am\'),\r\n\t(4,0" +
+                ",0,0,0,0,\'4am\'),\r\n\t(5,0,0,0,0,0,\'5am\'),\r\n\t(6,0,0,0,0,0,\'6am\'),\r\n\t(7,0,0,0,0,0,\'7" +
+                "am\'),\r\n\t(8,0,0,0,0,0,\'8am\'),\r\n\t(9,0,0,0,0,0,\'9am\'),\r\n\t(10,0,0,0,0,0,\'10am\'),\r\n\t(" +
+                "11,0,0,0,0,0,\'11am\'),\r\n\t(12,0,0,0,0,0,\'12pm\'),\r\n\t(13,0,0,0,0,0,\'1pm\'),\r\n\t(14,0,0" +
+                ",0,0,0,\'2pm\'),\r\n\t(15,0,0,0,0,0,\'3pm\'),\r\n\t(16,0,0,0,0,0,\'4pm\'),\r\n\t(17,0,0,0,0,0,\'" +
+                "5pm\'),\r\n\t(18,0,0,0,0,0,\'6pm\'),\r\n\t(19,0,0,0,0,0,\'7pm\'),\r\n\t(20,0,0,0,0,0,\'8pm\'),\r\n" +
+                "\t(21,0,0,0,0,0,\'9pm\'),\r\n\t(22,0,0,0,0,0,\'10pm\'),\r\n\t(23,0,0,0,0,0,\'11pm\');\r\n\r\nsele" +
+                "ct t.Time,t.TimeLabel,\r\ncoalesce(r.GrossSales,0) as GrossSales, \r\ncoalesce(r.Dis" +
+                "count,0) as Discount,\r\ncoalesce(r.NetSalesNoTax,0) as NetSalesNoTax,\r\ncoalesce(r" +
+                ".NetSalesWithTax,0) as NetSalesWithTax,\r\ncoalesce(r.Taxes,0) as Taxes  \r\nfrom (\r" +
+                "\n\tselect DATEPART(hour, SoldDate) as Time,CONVERT(date, SoldDate) as Date,\r\n\tSUM" +
+                "(CAST(GrossPrice as decimal)/100) as GrossSales,\r\n\tSUM((CAST(GrossPrice as decim" +
+                "al) - CAST(ActualPrice as decimal))/100) as Discount,\r\n\tSUM(CAST(ActualPrice as " +
+                "decimal) /100) as NetSalesNoTax,\r\n\tSUM(CAST(TotalTax as decimal)/100) as Taxes,\r" +
+                "\n\tSum((CAST(ActualPrice as decimal) + CAST(TotalTax as decimal))/100) as NetSale" +
+                "sWithTax,\r\n\t\'\' as TimeLabel\r\n\tfrom SaleItem as si LEFT JOIN\r\n\tSale as s on s.Sal" +
+                "eID = si.SaleID\r\n\twhere s.IsCancelled = 0 AND\r\n\t\ts.IsSuspend = 0 AND\r\n\t\ts.IsTrai" +
+                "nMode = 0 AND\r\n\t\tsi.VoidDate IS NULL AND\r\n\t\tsi.SoldDate IS NOT NULL AND\r\n\t\tCONVE" +
+                "RT(date,si.SoldDate) >= CONVERT(date,@StartDate) AND \r\n                         " +
+                "       CONVERT(date,si.SoldDate) <= CONVERT(date,@EndDate)\r\n\tgroup by DATEPART(h" +
+                "our, SoldDate),CONVERT(date, SoldDate)\r\n) as r \r\nRIGHT JOIN #tmp as t on t.Time " +
+                "= r.Time";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StartDate", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EndDate", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(fpos5DataSet.ItemSoldTableDataTable dataTable) {
+        public virtual int Fill(fpos5DataSet.ItemSoldTableDataTable dataTable, string StartDate, string EndDate) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((StartDate == null)) {
+                throw new global::System.ArgumentNullException("StartDate");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(StartDate));
+            }
+            if ((EndDate == null)) {
+                throw new global::System.ArgumentNullException("EndDate");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(EndDate));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -1047,8 +1064,20 @@ namespace FPOSReports.fpos5DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual fpos5DataSet.ItemSoldTableDataTable GetData() {
+        public virtual fpos5DataSet.ItemSoldTableDataTable GetData(string StartDate, string EndDate) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((StartDate == null)) {
+                throw new global::System.ArgumentNullException("StartDate");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(StartDate));
+            }
+            if ((EndDate == null)) {
+                throw new global::System.ArgumentNullException("EndDate");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(EndDate));
+            }
             fpos5DataSet.ItemSoldTableDataTable dataTable = new fpos5DataSet.ItemSoldTableDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

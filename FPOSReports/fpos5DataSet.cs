@@ -1,18 +1,4 @@
-﻿namespace FPOSReports
-{
-}
-
-namespace FPOSReports
-{
-}
-
-namespace FPOSReports
-{
-}
-
-namespace FPOSReports
-{
-}
+﻿
 namespace FPOSReports
 {
 
@@ -22,5 +8,12 @@ namespace FPOSReports
         partial class ItemSoldTableDataTable
         {
         }
+    }
+}
+
+namespace FPOSReports.fpos5DataSetTableAdapters {
+    
+    
+    public partial class ItemSoldTableAdapter {
     }
 }
