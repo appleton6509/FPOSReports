@@ -61,20 +61,5 @@ namespace FPOSReports
             if (DateTime.Compare(start, end) <= 0)
                 PopulateData(start, end);
         }
-
-        private void reportViewer1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lblFrom_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
