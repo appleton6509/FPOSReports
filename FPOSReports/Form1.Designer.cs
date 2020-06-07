@@ -29,145 +29,25 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.ItemSoldTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fpos5DataSet = new FPOSReports.fpos5DataSet();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.pnlViewer = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pbxSettings = new System.Windows.Forms.PictureBox();
             this.btnRun = new System.Windows.Forms.Button();
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.lblTo = new System.Windows.Forms.Label();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.lblFrom = new System.Windows.Forms.Label();
-            this.ItemSoldTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fpos5DataSet = new FPOSReports.fpos5DataSet();
             this.ItemSoldTableAdapter = new FPOSReports.fpos5DataSetTableAdapters.ItemSoldTableAdapter();
             this.tableAdapterManager1 = new FPOSReports.fpos5DataSetTableAdapters.TableAdapterManager();
-            this.pnlViewer.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemSoldTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fpos5DataSet)).BeginInit();
+            this.pnlViewer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxSettings)).BeginInit();
             this.SuspendLayout();
-            // 
-            // reportViewer1
-            // 
-            this.reportViewer1.AllowDrop = true;
-            this.reportViewer1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.reportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer1.DocumentMapWidth = 1;
-            reportDataSource3.Name = "ItemSoldDataSet";
-            reportDataSource3.Value = this.ItemSoldTableBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "FPOSReports.Report1.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.ShowBackButton = false;
-            this.reportViewer1.ShowDocumentMapButton = false;
-            this.reportViewer1.ShowFindControls = false;
-            this.reportViewer1.ShowPageNavigationControls = false;
-            this.reportViewer1.ShowPromptAreaButton = false;
-            this.reportViewer1.ShowRefreshButton = false;
-            this.reportViewer1.ShowStopButton = false;
-            this.reportViewer1.Size = new System.Drawing.Size(755, 761);
-            this.reportViewer1.TabIndex = 0;
-            // 
-            // pnlViewer
-            // 
-            this.pnlViewer.Controls.Add(this.tableLayoutPanel1);
-            this.pnlViewer.Controls.Add(this.reportViewer1);
-            this.pnlViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlViewer.Location = new System.Drawing.Point(0, 0);
-            this.pnlViewer.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlViewer.Name = "pnlViewer";
-            this.pnlViewer.Size = new System.Drawing.Size(755, 761);
-            this.pnlViewer.TabIndex = 1;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.tableLayoutPanel1.ColumnCount = 7;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.btnRun, 5, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dtpEndDate, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblTo, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dtpStartDate, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblFrom, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(755, 26);
-            this.tableLayoutPanel1.TabIndex = 3;
-            // 
-            // btnRun
-            // 
-            this.btnRun.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRun.Location = new System.Drawing.Point(485, 3);
-            this.btnRun.Name = "btnRun";
-            this.btnRun.Size = new System.Drawing.Size(71, 20);
-            this.btnRun.TabIndex = 5;
-            this.btnRun.Text = "Run";
-            this.btnRun.UseVisualStyleBackColor = true;
-            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
-            // 
-            // dtpEndDate
-            // 
-            this.dtpEndDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEndDate.Location = new System.Drawing.Point(379, 3);
-            this.dtpEndDate.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
-            this.dtpEndDate.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
-            this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(100, 20);
-            this.dtpEndDate.TabIndex = 1;
-            // 
-            // lblTo
-            // 
-            this.lblTo.AutoSize = true;
-            this.lblTo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTo.Location = new System.Drawing.Point(349, 0);
-            this.lblTo.Name = "lblTo";
-            this.lblTo.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.lblTo.Size = new System.Drawing.Size(24, 18);
-            this.lblTo.TabIndex = 4;
-            this.lblTo.Text = "To:";
-            // 
-            // dtpStartDate
-            // 
-            this.dtpStartDate.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpStartDate.Location = new System.Drawing.Point(243, 3);
-            this.dtpStartDate.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
-            this.dtpStartDate.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
-            this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(100, 20);
-            this.dtpStartDate.TabIndex = 0;
-            this.dtpStartDate.Value = new System.DateTime(2020, 6, 6, 11, 33, 27, 0);
-            // 
-            // lblFrom
-            // 
-            this.lblFrom.AutoSize = true;
-            this.lblFrom.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFrom.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.lblFrom.Location = new System.Drawing.Point(198, 0);
-            this.lblFrom.Name = "lblFrom";
-            this.lblFrom.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.lblFrom.Size = new System.Drawing.Size(39, 18);
-            this.lblFrom.TabIndex = 3;
-            this.lblFrom.Text = "From:";
-            this.lblFrom.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ItemSoldTableBindingSource
             // 
@@ -178,6 +58,120 @@
             // 
             this.fpos5DataSet.DataSetName = "fpos5DataSet";
             this.fpos5DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.AllowDrop = true;
+            this.reportViewer1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.reportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportViewer1.DocumentMapWidth = 1;
+            reportDataSource1.Name = "ItemSoldDataSet";
+            reportDataSource1.Value = this.ItemSoldTableBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "FPOSReports.Report1.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Margin = new System.Windows.Forms.Padding(4);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.ShowBackButton = false;
+            this.reportViewer1.ShowDocumentMapButton = false;
+            this.reportViewer1.ShowFindControls = false;
+            this.reportViewer1.ShowPageNavigationControls = false;
+            this.reportViewer1.ShowPromptAreaButton = false;
+            this.reportViewer1.ShowRefreshButton = false;
+            this.reportViewer1.ShowStopButton = false;
+            this.reportViewer1.Size = new System.Drawing.Size(999, 937);
+            this.reportViewer1.TabIndex = 0;
+            // 
+            // pnlViewer
+            // 
+            this.pnlViewer.Controls.Add(this.pbxSettings);
+            this.pnlViewer.Controls.Add(this.btnRun);
+            this.pnlViewer.Controls.Add(this.dtpEndDate);
+            this.pnlViewer.Controls.Add(this.lblTo);
+            this.pnlViewer.Controls.Add(this.dtpStartDate);
+            this.pnlViewer.Controls.Add(this.lblFrom);
+            this.pnlViewer.Controls.Add(this.reportViewer1);
+            this.pnlViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlViewer.Location = new System.Drawing.Point(0, 0);
+            this.pnlViewer.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlViewer.Name = "pnlViewer";
+            this.pnlViewer.Size = new System.Drawing.Size(999, 937);
+            this.pnlViewer.TabIndex = 1;
+            // 
+            // pbxSettings
+            // 
+            this.pbxSettings.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbxSettings.Image = global::FPOSReports.Properties.Resources.cog_gear;
+            this.pbxSettings.Location = new System.Drawing.Point(267, 2);
+            this.pbxSettings.Name = "pbxSettings";
+            this.pbxSettings.Size = new System.Drawing.Size(24, 23);
+            this.pbxSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxSettings.TabIndex = 7;
+            this.pbxSettings.TabStop = false;
+            this.pbxSettings.Click += new System.EventHandler(this.pbxSettings_Click);
+            // 
+            // btnRun
+            // 
+            this.btnRun.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRun.Location = new System.Drawing.Point(886, 3);
+            this.btnRun.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRun.Name = "btnRun";
+            this.btnRun.Size = new System.Drawing.Size(95, 24);
+            this.btnRun.TabIndex = 5;
+            this.btnRun.Text = "Run";
+            this.btnRun.UseVisualStyleBackColor = true;
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
+            // 
+            // dtpEndDate
+            // 
+            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpEndDate.Location = new System.Drawing.Point(739, 4);
+            this.dtpEndDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpEndDate.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
+            this.dtpEndDate.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(132, 22);
+            this.dtpEndDate.TabIndex = 1;
+            // 
+            // lblTo
+            // 
+            this.lblTo.AutoSize = true;
+            this.lblTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTo.Location = new System.Drawing.Point(709, 2);
+            this.lblTo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTo.Name = "lblTo";
+            this.lblTo.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.lblTo.Size = new System.Drawing.Size(30, 22);
+            this.lblTo.TabIndex = 4;
+            this.lblTo.Text = "To:";
+            // 
+            // dtpStartDate
+            // 
+            this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpStartDate.Location = new System.Drawing.Point(553, 4);
+            this.dtpStartDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpStartDate.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
+            this.dtpStartDate.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(132, 22);
+            this.dtpStartDate.TabIndex = 0;
+            this.dtpStartDate.Value = new System.DateTime(2020, 6, 6, 11, 33, 27, 0);
+            // 
+            // lblFrom
+            // 
+            this.lblFrom.AutoSize = true;
+            this.lblFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFrom.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.lblFrom.Location = new System.Drawing.Point(497, 2);
+            this.lblFrom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFrom.Name = "lblFrom";
+            this.lblFrom.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.lblFrom.Size = new System.Drawing.Size(48, 22);
+            this.lblFrom.TabIndex = 3;
+            this.lblFrom.Text = "From:";
+            this.lblFrom.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ItemSoldTableAdapter
             // 
@@ -191,26 +185,27 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(755, 761);
+            this.ClientSize = new System.Drawing.Size(999, 937);
             this.Controls.Add(this.pnlViewer);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FPOS - Hourly Sales Report";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.pnlViewer.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemSoldTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fpos5DataSet)).EndInit();
+            this.pnlViewer.ResumeLayout(false);
+            this.pnlViewer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxSettings)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -227,8 +222,8 @@
         private System.Windows.Forms.Label lblTo;
         private System.Windows.Forms.Label lblFrom;
         private System.Windows.Forms.Button btnRun;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private fpos5DataSetTableAdapters.TableAdapterManager tableAdapterManager1;
+        private System.Windows.Forms.PictureBox pbxSettings;
     }
 }
 
