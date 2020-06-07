@@ -1026,33 +1026,22 @@ namespace FPOSReports.fpos5DataSetTableAdapters {
                 "sWithTax,\r\n\t\'\' as TimeLabel\r\n\tfrom SaleItem as si LEFT JOIN\r\n\tSale as s on s.Sal" +
                 "eID = si.SaleID\r\n\twhere s.IsCancelled = 0 AND\r\n\t\ts.IsSuspend = 0 AND\r\n\t\ts.IsTrai" +
                 "nMode = 0 AND\r\n\t\tsi.VoidDate IS NULL AND\r\n\t\tsi.SoldDate IS NOT NULL AND\r\n\t\tCONVE" +
-                "RT(date,si.SoldDate) >= CONVERT(date,@StartDate) AND \r\n                         " +
-                "       CONVERT(date,si.SoldDate) <= CONVERT(date,@EndDate)\r\n\tgroup by DATEPART(h" +
-                "our, SoldDate),CONVERT(date, SoldDate)\r\n) as r \r\nRIGHT JOIN #tmp as t on t.Time " +
-                "= r.Time";
+                "RT(date,si.SoldDate) BETWEEN @StartDate AND @EndDate\r\n\tgroup by DATEPART(hour, S" +
+                "oldDate),CONVERT(date, SoldDate)\r\n) as r \r\nRIGHT JOIN #tmp as t on t.Time = r.Ti" +
+                "me";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StartDate", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EndDate", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StartDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EndDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(fpos5DataSet.ItemSoldTableDataTable dataTable, string StartDate, string EndDate) {
+        public virtual int Fill(fpos5DataSet.ItemSoldTableDataTable dataTable, System.DateTime StartDate, System.DateTime EndDate) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((StartDate == null)) {
-                throw new global::System.ArgumentNullException("StartDate");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(StartDate));
-            }
-            if ((EndDate == null)) {
-                throw new global::System.ArgumentNullException("EndDate");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(EndDate));
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(StartDate));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(EndDate));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -1064,20 +1053,10 @@ namespace FPOSReports.fpos5DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual fpos5DataSet.ItemSoldTableDataTable GetData(string StartDate, string EndDate) {
+        public virtual fpos5DataSet.ItemSoldTableDataTable GetData(System.DateTime StartDate, System.DateTime EndDate) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((StartDate == null)) {
-                throw new global::System.ArgumentNullException("StartDate");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(StartDate));
-            }
-            if ((EndDate == null)) {
-                throw new global::System.ArgumentNullException("EndDate");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(EndDate));
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(StartDate));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(EndDate));
             fpos5DataSet.ItemSoldTableDataTable dataTable = new fpos5DataSet.ItemSoldTableDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

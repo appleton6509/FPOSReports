@@ -17,6 +17,8 @@ namespace FPOSReports
             try
             {
                 InitializeComponent();
+
+                Initialize();
             }
             catch (Exception e)
             {
@@ -25,11 +27,18 @@ namespace FPOSReports
 
         }
 
+        private void Initialize()
+        {
+            dtpEndDate.Value = DateTime.Today;
+            dtpStartDate.Value = DateTime.Today;
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
+
             try
             {
-                PopulateData(DateTime.Today, DateTime.Today);
+                PopulateData(dtpStartDate.Value, dtpEndDate.Value);
             }
             catch (Exception f)
             {
@@ -40,8 +49,32 @@ namespace FPOSReports
         private void PopulateData(DateTime startDate, DateTime endDate)
         {
             // TODO: This line of code loads data into the 'fpos5DataSet.ItemSoldTable' table. You can move, or remove it, as needed.
-            this.ItemSoldTableAdapter.Fill(this.fpos5DataSet.ItemSoldTable, startDate.ToString(), endDate.ToString());
+            this.ItemSoldTableAdapter.Fill(this.fpos5DataSet.ItemSoldTable,startDate, endDate);
             this.reportViewer1.RefreshReport();
+        }
+
+        private void btnRun_Click(object sender, EventArgs e)
+        {
+            var end = dtpEndDate.Value;
+            var start = dtpStartDate.Value;
+
+            if (DateTime.Compare(start, end) <= 0)
+                PopulateData(start, end);
+        }
+
+        private void reportViewer1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblFrom_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
