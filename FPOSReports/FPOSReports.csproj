@@ -21,8 +21,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
+    <SupportUrl>http://www.condorpos.com</SupportUrl>
+    <ProductName>FPOS Reports</ProductName>
+    <PublisherName>Condor Solutions</PublisherName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationRevision>8</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -153,7 +156,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Reports1.ico" />
+    <EmbeddedResource Include="Reports1.ico" />
   </ItemGroup>
   <ItemGroup>
     <PublishFile Include="de\Microsoft.ReportViewer.Common.resources">
