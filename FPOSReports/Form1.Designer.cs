@@ -81,7 +81,7 @@
             this.reportViewer1.ShowPromptAreaButton = false;
             this.reportViewer1.ShowRefreshButton = false;
             this.reportViewer1.ShowStopButton = false;
-            this.reportViewer1.Size = new System.Drawing.Size(999, 937);
+            this.reportViewer1.Size = new System.Drawing.Size(1006, 721);
             this.reportViewer1.TabIndex = 0;
             // 
             // pnlViewer
@@ -97,7 +97,7 @@
             this.pnlViewer.Location = new System.Drawing.Point(0, 0);
             this.pnlViewer.Margin = new System.Windows.Forms.Padding(0);
             this.pnlViewer.Name = "pnlViewer";
-            this.pnlViewer.Size = new System.Drawing.Size(999, 937);
+            this.pnlViewer.Size = new System.Drawing.Size(1006, 721);
             this.pnlViewer.TabIndex = 1;
             // 
             // pbxSettings
@@ -190,7 +190,7 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(999, 937);
+            this.ClientSize = new System.Drawing.Size(1006, 721);
             this.Controls.Add(this.pnlViewer);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
