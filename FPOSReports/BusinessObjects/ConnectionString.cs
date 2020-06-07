@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace FPOSReports
 {
@@ -15,7 +11,7 @@ namespace FPOSReports
         public string Database { get; set; }
         public string Instance { get; set; }
 
-        private static Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+        private static readonly Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
         public void UpdateConnection()
         {

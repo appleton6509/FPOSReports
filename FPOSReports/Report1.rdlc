@@ -157,7 +157,6 @@
                             <rd:FormatSymbolCulture>en-CA</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -197,7 +196,6 @@
                             <rd:FormatSymbolCulture>en-CA</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -236,7 +234,6 @@
                             <rd:FormatSymbolCulture>en-CA</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -275,7 +272,6 @@
                             <rd:FormatSymbolCulture>en-CA</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -314,7 +310,6 @@
                             <rd:FormatSymbolCulture>en-CA</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -894,14 +889,15 @@
                 <Value>=Fields!Time.Value</Value>
               </SortExpression>
             </SortExpressions>
-            <Top>7.12906cm</Top>
+            <Top>8.08156cm</Top>
             <Left>0.39158cm</Left>
-            <Height>2.82458cm</Height>
-            <Width>18.70414cm</Width>
+            <Height>2.82459cm</Height>
+            <Width>18.70412cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
+              <FontFamily>Segoe UI</FontFamily>
               <VerticalAlign>Middle</VerticalAlign>
             </Style>
           </Tablix>
@@ -1244,7 +1240,7 @@
               </Style>
             </ChartNoDataMessage>
             <DataSetName>ItemSoldDataSet</DataSetName>
-            <Top>0.21698cm</Top>
+            <Top>1.16948cm</Top>
             <Left>0.127cm</Left>
             <Height>6.76392cm</Height>
             <Width>19.23334cm</Width>
@@ -1263,7 +1259,7 @@
             </cl:ComponentMetadata>
           </Chart>
         </ReportItems>
-        <Height>4.01876in</Height>
+        <Height>4.48543in</Height>
         <Style>
           <Border>
             <Style>None</Style>

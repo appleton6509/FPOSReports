@@ -1,13 +1,5 @@
 ﻿using FPOSReports.BusinessObjects;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FPOSReports
@@ -15,18 +7,20 @@ namespace FPOSReports
     public partial class Form1 : Form
     {
         public static string CONNECTION_STRING_NAME = "FPOSReports.Properties.Settings.fpos5ConnectionString";
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public Form1()
         {
             try
             {
                 InitializeComponent();
-
+                log4net.Config.XmlConfigurator.Configure();
                 Initialize();
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
+                log.Error("Error during initialization", e);
             }
 
         }
@@ -47,18 +41,22 @@ namespace FPOSReports
             if (DateTime.Compare(dates.StartDate, dates.EndDate) > 0)
             {
                 MessageBox.Show("Start date cant be later then end date");
+                log.Info("Start date was set later then end date");
                 return;
             }
+
 
             try
             {
                 this.ItemSoldTableAdapter.Connection.ConnectionString = ConnectionString.GetConnectionString(CONNECTION_STRING_NAME).ToString();
                 this.ItemSoldTableAdapter.Fill(this.fpos5DataSet.ItemSoldTable, dates.StartDate, dates.EndDate);
                 this.reportViewer1.RefreshReport();
+                lblDateRange.Text = $"Reporting from {dates.StartDate.ToShortDateString()} 00:00hrs - {dates.EndDate.ToShortDateString()} 23:59:59hrs";
             }
             catch (Exception f)
             {
                 MessageBox.Show(f.Message);
+                log.Error("Error updating report data", f);
             }
     
         }
@@ -66,7 +64,7 @@ namespace FPOSReports
         private void btnRun_Click(object sender, EventArgs e)
         {
             var dates = new DateParameter(dtpStartDate.Value, dtpEndDate.Value);
-                PopulateData(dates);
+            PopulateData(dates);
         }
 
         private void pbxSettings_Click(object sender, EventArgs e)
