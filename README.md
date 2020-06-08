@@ -1,5 +1,5 @@
 # FPOS - Hourly Sales Report
-### An alternative FPOS report for the Hourly Sales Report
+### An alternative FPOS report Hourly Sales Report
 
 Currently in the POS system hourly sales reports show each hour's sales based upon sale completion, i.e. when a server collects payment and closes the sale. This can create wide variances in actual hourly sales and display certain time ranges as BUSY when they are more or less winding down. 
 
