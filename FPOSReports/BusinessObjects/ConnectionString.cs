@@ -32,7 +32,7 @@ namespace FPOSReports
                 this.Database = database;
                 this.Instance = instance;
                 this.Name = name;
-            } catch (Exception e)
+            } catch (Exception)
             {
                 throw new ArgumentException($"The connection string is in an invalid format: " + connectionString);
             }
