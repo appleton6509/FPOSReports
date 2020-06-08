@@ -5,6 +5,7 @@ Currently in the FPOS system hourly sales reports show each hour's sales based u
 
 This report corrects this issue by displaying hourly sales based upon when the item was initially rung into the POS system, i.e. the TRUE purchased time.
 
+### Features:
 - Hourly Sales Breakdown
 - Date Range Reporting
 - Charts
