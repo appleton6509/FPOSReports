@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FPOSReports.BusinessObjects;
+using System;
 using System.Windows.Forms;
 
 namespace FPOSReports
@@ -15,7 +16,7 @@ namespace FPOSReports
 
         private void UpdateTextFields()
         {
-            ConnectionString connect = ConnectionString.GetConnectionString(Form1.CONNECTION_STRING_NAME);
+            ConnectionString connect = ConnectionString.GetXMLConnectionString(Globals.CONNECTION_STRING_NAME);
             tbxDatabase.Text = connect.Database;
             tbxInstance.Text = connect.Instance;
         }
@@ -24,14 +25,7 @@ namespace FPOSReports
         {
             var db = tbxDatabase.Text;
             var instance = tbxInstance.Text;
-
-            ConnectionString connect = new ConnectionString()
-            {
-                Name = Form1.CONNECTION_STRING_NAME,
-                Database = db,
-                Instance = instance
-            };
-            connect.UpdateConnection();
+            ConnectionString.UpdateXMLConnectionString(new ConnectionString(Globals.CONNECTION_STRING_NAME, db, instance));
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessObjects\DateParameter.cs" />
+    <Compile Include="BusinessObjects\Globals.cs" />
     <Compile Include="ConnectionSettings.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -6,7 +6,6 @@ namespace FPOSReports
 {
     public partial class Form1 : Form
     {
-        public static string CONNECTION_STRING_NAME = "FPOSReports.Properties.Settings.fpos5ConnectionString";
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public Form1()
@@ -22,7 +21,6 @@ namespace FPOSReports
                 MessageBox.Show(e.Message);
                 log.Error("Error during initialization", e);
             }
-
         }
 
         private void Initialize()
@@ -48,7 +46,7 @@ namespace FPOSReports
 
             try
             {
-                this.ItemSoldTableAdapter.Connection.ConnectionString = ConnectionString.GetConnectionString(CONNECTION_STRING_NAME).ToString();
+                this.ItemSoldTableAdapter.Connection.ConnectionString = ConnectionString.GetXMLConnectionString(Globals.CONNECTION_STRING_NAME).ToString();
                 this.ItemSoldTableAdapter.Fill(this.fpos5DataSet.ItemSoldTable, dates.StartDate, dates.EndDate);
                 this.reportViewer1.RefreshReport();
                 lblDateRange.Text = $"Reporting from {dates.StartDate.ToShortDateString()} 00:00hrs - {dates.EndDate.ToShortDateString()} 23:59:59hrs";
