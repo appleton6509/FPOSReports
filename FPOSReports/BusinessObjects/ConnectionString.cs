@@ -1,24 +1,53 @@
-﻿using System;
+﻿using FPOSReports.BusinessObjects;
+using System;
 using System.Configuration;
 using System.Linq;
 
 
 namespace FPOSReports
 {
+    /// <summary>
+    /// A class representing a database connection string
+    /// </summary>
     public class ConnectionString
     {
-
+        /// <summary>
+        /// The name of the connection string contained within the xml collection
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// the name of the database
+        /// </summary>
         public string Database { get; set; }
+        /// <summary>
+        /// The device and instance data source string i.e. LOCALHOST\MSSQL
+        /// </summary>
         public string Instance { get; set; }
 
         private static readonly Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
         public ConnectionString(string name, string connectionString)
         {
-            if (String.IsNullOrEmpty(name) || String.IsNullOrEmpty(connectionString))
-                throw new ArgumentNullException($"The name and connection string must be provided");
+            Build(name, connectionString);
+        }
 
+        public ConnectionString(string name, string database, string instance) 
+        {
+            Instance = instance ?? throw new ArgumentNullException(nameof(instance));
+            Name = name ?? throw new ArgumentNullException(nameof(name));
+            Database = database ?? throw new ArgumentNullException(nameof(database));
+        }
+
+        /// <summary>
+        /// Builds the connection string object
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="connectionString"></param>
+        /// <returns></returns>
+        public ConnectionString Build(string name, string connectionString)
+        {
+            if (String.IsNullOrEmpty(name) || String.IsNullOrEmpty(connectionString))
+                throw new ArgumentNullException(Globals.EXCEPTIONS["CStringArgNull"]);
             try
             {
                 var instance = connectionString
@@ -32,19 +61,17 @@ namespace FPOSReports
                 this.Database = database;
                 this.Instance = instance;
                 this.Name = name;
-            } catch (Exception)
-            {
-                throw new ArgumentException($"The connection string is in an invalid format: " + connectionString);
             }
+            catch (Exception)
+            {
+                throw new ArgumentException(Globals.EXCEPTIONS["CStringInvalidFormat"] + connectionString);
+            }
+            return this;
         }
-
-        public ConnectionString(string name, string database, string instance) 
-        {
-            Instance = instance ?? throw new ArgumentNullException(nameof(instance));
-            Name = name ?? throw new ArgumentNullException(nameof(name));
-            Database = database ?? throw new ArgumentNullException(nameof(database));
-        }
-
+        /// <summary>
+        /// Update a connection string within the xml collection
+        /// </summary>
+        /// <param name="connectionString"></param>
         public static void UpdateXMLConnectionString(ConnectionString connectionString)
         {
             var connectionStringsSection = (ConnectionStringsSection)_config.GetSection("connectionStrings");
@@ -53,6 +80,11 @@ namespace FPOSReports
             ConfigurationManager.RefreshSection("connectionStrings");
         }
 
+        /// <summary>
+        /// Retrieve a Connection string from the xml collection
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static ConnectionString GetXMLConnectionString(string name)
         {
             var connectionStringsSection = (ConnectionStringsSection)_config.GetSection("connectionStrings");
@@ -62,7 +94,7 @@ namespace FPOSReports
 
         public override string ToString()
         {
-            return $"Data Source={this.Instance};Initial Catalog={this.Database};Integrated Security=True;Connection Timeout=3";
+            return $"Data Source={this.Instance};Initial Catalog={this.Database};Integrated Security=True;Connection Timeout={Globals.TIMEOUT}";
         }
     }
 }
